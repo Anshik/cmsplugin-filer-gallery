@@ -4,7 +4,7 @@ from django.db import models
 from cms.models import CMSPlugin, Page
 
 class FilerGallery(CMSPlugin):
-                     )
+
     gallery = models.ForeignKey('filer_gallery.Gallery')
 
     class Meta:
