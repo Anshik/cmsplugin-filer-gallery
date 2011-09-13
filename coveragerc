@@ -1,0 +1,11 @@
+[run]
+branch = True
+source =
+    cmsplugin_filer_gallery
+omit =
+    cmsplugin_filer_gallery/migrations/*
+    cmsplugin_filer_gallery/tests/*
+    cmsplugin_filer_gallery/test/*
+    cmsplugin_filer_gallery/test/testapp/*
+[report]
+precision = 2
