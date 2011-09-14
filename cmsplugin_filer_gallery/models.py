@@ -4,7 +4,7 @@ from django.db import models
 from cms.models import CMSPlugin, Page
 
 ANIMATION_CHOICES=('fade', 'horizontal-slide', 'vertical-slide', 'horizontal-push')
-ANIMATION_CHOICES=enumerate(ANIMATION_CHOICES)
+ANIMATION_CHOICES=tuple(enumerate(ANIMATION_CHOICES))
 
 class FilerGallery(CMSPlugin):
 
