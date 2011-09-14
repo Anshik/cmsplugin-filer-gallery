@@ -8,6 +8,11 @@
 //<![CDATA[
 (function ($) {
     var config = {{ orbit_config|safe }}
+    
+    config.bulletThumbs = false // thumbnails for the bullets
+    config.bulletThumbLocation = ''		     
+    config.afterSlideChange = function(){}
+    
     $(document).ready(function () {
         $('#filer-gallery-{{ instance.pk }}').orbit(config);
     });
@@ -18,6 +23,11 @@
 
 <div id="filer-gallery-{{ instance.pk }}">
      {% for image in instance.gallery.galleryimage_set.all %}
-     <img src="{% thumbnail image.image size %}" alt="{{ image.title }}" />
+     <img src="{% thumbnail image.image size %}" alt="{{ image.title }}" {% if instance.captions %}data-caption="#filer-gallery-caption-{{ image.pk }}"{% endif %} />
      {% endfor %}
 </div>
+{% if instance.captions %}
+    {% for image in instance.gallery.galleryimage_set.all %}
+    <span class="orbit-caption" id="filer-gallery-caption-{{ image.pk }}">{{ image.title }}</span>
+    {% endfor %}
+{% endif %}
