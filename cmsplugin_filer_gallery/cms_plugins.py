@@ -1,4 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
+from django.utils import simplejson
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from cmsplugin_filer_gallery.models import FilerGallery
@@ -12,8 +13,23 @@ class FilerGalleryPlugin(CMSPluginBase):
     admin_preview = False
     
     def render(self, context, instance, placeholder):
+        config = simplejson.dumps({
+             'animation': instance.animation.get_display(),                     # fade, horizontal-slide, vertical-slide, horizontal-push
+             'animationSpeed': instance.speed,                                  # how fast animations are
+             'timer': instance.timer,                                           # True or False to have the timer
+             'advanceSpeed': instance.advanced_speed,                           # if timer is enabled, time between transitions 
+             'pauseOnHover': instance.pause_on_hover,                           # if you hover pauses the slider
+             'startClockOnMouseOut': instance.start_on_mouseout,                # if clock should start on MouseOut
+             'startClockOnMouseOutAfter': instance.start_after,                 # how long after MouseOut should the timer start again
+             'directionalNav': instance.directional_nav,                        # manual advancing directional navs
+             'captions': instance.captions,                                     # do you want captions?
+             'captionAnimation': instance.caption_animation.get_display(),      # fade, slideOpen, none
+             'captionAnimationSpeed': instance.caption_speed,                   # if so how quickly should they animate in
+             'bullets': instance.bullets                                        # True or False to activate the bullet navigation
+        })
         context.update({
-            'instance': instance
+            'instance': instance,
+            'orbit_config': config
         })
         return context
 

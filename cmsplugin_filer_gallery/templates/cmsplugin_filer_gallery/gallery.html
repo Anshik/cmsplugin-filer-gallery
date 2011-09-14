@@ -7,8 +7,9 @@
 <script type="text/javascript">
 //<![CDATA[
 (function ($) {
+    var config = {{ orbit_config }}
     $(document).ready(function () {
-        $('#filer-gallery-{{ instance.pk }}').orbit();
+        $('#filer-gallery-{{ instance.pk }}').orbit(config);
     });
 })(jQuery)
 //]]>
@@ -17,6 +18,6 @@
 
 <div id="filer-gallery-{{ instance.pk }}">
      {% for image in instance.gallery.galleryimage_set.all %}
-     <img src="{% thumbnail image.image 300x200 %}" alt="{{ image.title }}" />
+     <img src="{% thumbnail image.image size %}" alt="{{ image.title }}" />
      {% endfor %}
 </div>
