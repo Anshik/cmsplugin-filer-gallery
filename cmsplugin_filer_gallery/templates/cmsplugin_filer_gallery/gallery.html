@@ -6,9 +6,11 @@
 {% addtoblock "js" %}
 <script type="text/javascript">
 //<![CDATA[
-jQuery(document).ready(function ($) {
-    $('#filer-gallery-{{ instance.pk }}').orbit();
-});
+(function ($) {
+    $(document).ready(function () {
+        $('#filer-gallery-{{ instance.pk }}').orbit();
+    });
+})()
 //]]>
 </script>
 {% endaddtoblock %}
