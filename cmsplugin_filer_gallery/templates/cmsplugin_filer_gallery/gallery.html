@@ -1,7 +1,7 @@
 {% load adminmedia sekizai_tags %}
 {% addtoblock "js" %}<script type="text/javascript" src="{% admin_media_prefix %}js/jquery.min.js"></script>{% endaddtoblock %}
 {% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}filer_gallery/orbit/orbit-1.2.3.js"></script>{% endaddtoblock %}
-{% addtoblock "css" %}<script type="text/javascript" src="{{ STATIC_URL }}filer_gallery/orbit/orbit-1.2.3.css"></script>{% endaddtoblock %}
+{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}filer_gallery/orbit/orbit-1.2.3.css" media="all" />{% endaddtoblock %}
 {% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_filer_gallery/cmsplugin_filer_gallery.css" media="all" />{% endaddtoblock %}
 {% addtoblock "js" %}
 <script type="text/javascript">
