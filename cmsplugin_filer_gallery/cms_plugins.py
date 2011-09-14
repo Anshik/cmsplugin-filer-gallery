@@ -23,7 +23,8 @@ class FilerGalleryPlugin(CMSPluginBase):
              'startClockOnMouseOutAfter': instance.start_after,                 # how long after MouseOut should the timer start again
              'directionalNav': instance.directional_nav,                        # manual advancing directional navs
              'captions': instance.captions,                                     # do you want captions?
-             'captionAnimation': instance.get_caption_animation_display(),      # fade, slideOpen, none
+             'captionAnimation': instance.aption_animation and \
+                 instance.get_caption_animation_display() or 'none'             # fade, slideOpen, none
              'captionAnimationSpeed': instance.caption_speed,                   # if so how quickly should they animate in
              'bullets': instance.bullets                                        # True or False to activate the bullet navigation
         })
