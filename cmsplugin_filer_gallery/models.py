@@ -5,6 +5,8 @@ from cms.models import CMSPlugin, Page
 
 ANIMATION_CHOICES=('fade', 'horizontal-slide', 'vertical-slide', 'horizontal-push')
 ANIMATION_CHOICES=tuple(enumerate(ANIMATION_CHOICES))
+CAPTION_ANIMATION_CHOICES=('fade', 'slideOpen')
+CAPTION_ANIMATION_CHOICES=tuple(enumerate(CAPTION_ANIMATION_CHOICES))
 
 class FilerGallery(CMSPlugin):
 
@@ -20,7 +22,7 @@ class FilerGallery(CMSPlugin):
     start_after = models.IntegerField(default=1000)
     directional_nav = models.BooleanField(default=False)
     captions = models.BooleanField(default=False)
-    caption_animation = models.SmallIntegerField(choices=ANIMATION_CHOICES)
+    caption_animation = models.SmallIntegerField(choices=CAPTION_ANIMATION_CHOICES, null=True, blank=True)
     caption_speed = models.SmallIntegerField(default=800)
     bullets = models.BooleanField(default=False)
     

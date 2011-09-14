@@ -14,7 +14,7 @@ class FilerGalleryPlugin(CMSPluginBase):
     
     def render(self, context, instance, placeholder):
         config = simplejson.dumps({
-             'animation': instance.animation.get_display(),                     # fade, horizontal-slide, vertical-slide, horizontal-push
+             'animation': instance.get_animation_display(),                     # fade, horizontal-slide, vertical-slide, horizontal-push
              'animationSpeed': instance.speed,                                  # how fast animations are
              'timer': instance.timer,                                           # True or False to have the timer
              'advanceSpeed': instance.advanced_speed,                           # if timer is enabled, time between transitions 
@@ -23,12 +23,13 @@ class FilerGalleryPlugin(CMSPluginBase):
              'startClockOnMouseOutAfter': instance.start_after,                 # how long after MouseOut should the timer start again
              'directionalNav': instance.directional_nav,                        # manual advancing directional navs
              'captions': instance.captions,                                     # do you want captions?
-             'captionAnimation': instance.caption_animation.get_display(),      # fade, slideOpen, none
+             'captionAnimation': instance.get_caption_animation_display(),      # fade, slideOpen, none
              'captionAnimationSpeed': instance.caption_speed,                   # if so how quickly should they animate in
              'bullets': instance.bullets                                        # True or False to activate the bullet navigation
         })
         context.update({
             'instance': instance,
+            'size': (instance.height, instance.width),
             'orbit_config': config
         })
         return context
