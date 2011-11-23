@@ -1,33 +1,59 @@
-{% load thumbnail adminmedia sekizai_tags %}
-{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}filer_gallery/orbit/jquery-1.5.1.min.js"></script>{% endaddtoblock %}
-{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}filer_gallery/orbit/jquery.orbit-1.2.3.min.js"></script>{% endaddtoblock %}
-{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}filer_gallery/orbit/orbit-1.2.3.css" media="all" />{% endaddtoblock %}
-{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_filer_gallery/cmsplugin_filer_gallery.css" media="all" />{% endaddtoblock %}
+{% load thumbnail sekizai_tags %}
+{% addtoblock "css" %}<link href="{{ STATIC_URL }}filer_gallery/skitter/css/skitter.styles.css" type="text/css" media="all" rel="stylesheet" />{% endaddtoblock %}
+{% addtoblock "css" %}<link href="{{ STATIC_URL }}filer_gallery/skitter.css" type="text/css" media="all" rel="stylesheet" />{% endaddtoblock %}
+{% addtoblock "css" %}<link href="{{ STATIC_URL }}filer_gallery/filer_gallery.css" type="text/css" media="all" rel="stylesheet" />{% endaddtoblock %}
+
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}filer_gallery/skitter/js/jquery-1.6.3.min.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}filer_gallery/skitter/js/jquery.easing.1.3.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}filer_gallery/skitter/js/jquery.animate-colors-min.js"></script>{% endaddtoblock %}
+
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}filer_gallery/skitter/js/jquery.skitter.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{{ STATIC_URL }}filer_gallery/skitter_init.js"></script>{% endaddtoblock %}
+
+
 {% addtoblock "js" %}
 <script type="text/javascript">
 //<![CDATA[
 (function ($) {
-    var config = {{ orbit_config|safe }}
-    
-    config.bulletThumbs = false // thumbnails for the bullets
-    config.bulletThumbLocation = ''		     
-    config.afterSlideChange = function(){}
-    
+    var config = {{ skitter_config|safe }}
     $(document).ready(function () {
-        $('#filer-gallery-{{ instance.pk }}').orbit(config);
+       $('#filer-gallery-plugin-{{ instance.pk }}').skitter(config);
+       $('#filer-gallerythumbs-plugin-{{ instance.pk }} img:first').addClass('active')
+       $('#filer-gallery-plugin-{{ instance.pk }}').bind("imageSwitched", function(event, skitter, imagenum ) {
+           $('#filer-gallerythumbs-plugin-{{ gallery.pk }} img').removeClass('active')
+           var child = imagenum == 0 ? 'last' : 'nth-child(' + imagenum + ')'
+           $('#filer-gallerythumbs-plugin-{{ gallery.pk }} img:' + child).addClass('active')
+       });
+
     });
-})(jQuery)
+})(skitter_jQuery)
 //]]>
 </script>
 {% endaddtoblock %}
 
-<div id="filer-gallery-{{ instance.pk }}">
-     {% for image in instance.gallery.galleryimage_set.all %}
-     <img src="{% thumbnail image.image size %}" alt="{{ image.title }}" {% if instance.captions %}data-caption="#filer-gallery-caption-{{ image.pk }}"{% endif %} />
-     {% endfor %}
-</div>
-{% if instance.captions %}
+<div class="filer-gallery-wrapper border_shadow">
+<div class="filer-gallery-imagewrapper">
+
+<div id="filer-gallery-plugin-{{ instance.pk }}" class="box_skitter box_skitter_medium">
+    <ul>
     {% for image in instance.gallery.galleryimage_set.all %}
-    <span class="orbit-caption" id="filer-gallery-caption-{{ image.pk }}">{{ image.title }}</span>
+        <li>
+            <a href="#"><img src="{% thumbnail image.image size %}" /></a>
+            <div class="label_text">
+                <p>{{ image.title }}</p>
+            </div>
+        </li>
     {% endfor %}
+    </ul> 
+</div>
+</div>
+{% if instance.thumb_height %}
+<div id="filer-gallerythumbs-{{ instance.pk }}" class="filer-gallery-thumbswrapper">
+{% spaceless %}
+{% for image in instance.gallery.galleryimage_set.all %}
+<img src="{% thumbnail image.image thumb_size %}" onclick="skitter_jQuery('#filer-gallery-{{ instance.pk }}').skitter('setimage', {{ forloop.counter0 }});return false"/>
+{% endfor %}
+{% endspaceless %}
+</div>
 {% endif %}
+</div>

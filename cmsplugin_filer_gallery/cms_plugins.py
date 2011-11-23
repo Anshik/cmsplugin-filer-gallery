@@ -14,24 +14,28 @@ class FilerGalleryPlugin(CMSPluginBase):
     
     def render(self, context, instance, placeholder):
         config = simplejson.dumps({
-             'animation': instance.get_animation_display(),                     # fade, horizontal-slide, vertical-slide, horizontal-push
-             'animationSpeed': instance.speed,                                  # how fast animations are
-             'timer': instance.timer,                                           # True or False to have the timer
-             'advanceSpeed': instance.advanced_speed,                           # if timer is enabled, time between transitions 
-             'pauseOnHover': instance.pause_on_hover,                           # if you hover pauses the slider
-             'startClockOnMouseOut': instance.start_on_mouseout,                # if clock should start on MouseOut
-             'startClockOnMouseOutAfter': instance.start_after,                 # how long after MouseOut should the timer start again
-             'directionalNav': instance.directional_nav,                        # manual advancing directional navs
-             'captions': instance.captions,                                     # do you want captions?
-             'captionAnimation': instance.caption_animation and 
-                 instance.get_caption_animation_display() or 'none',             # fade, slideOpen, none
-             'captionAnimationSpeed': instance.caption_speed,                   # if so how quickly should they animate in
-             'bullets': instance.bullets                                        # True or False to activate the bullet navigation
-        })
+            'navigation': True,
+            'interval': 2500,
+            'numbers': True,
+            'label': True,
+            'animation': 'random',
+            'thumbs': False,
+            'hideTools': False,
+            'dots': False,
+            'easing_default': None,
+            'velocity': 1,
+            'animateNumberOut': {'backgroundColor':'#000', 'color':'#ccc'},
+            'animateNumberOver': {'backgroundColor':'#000', 'color':'#ccc'},
+            'animateNumberActive': {'backgroundColor':'#000', 'color':'#ccc'},
+            'width_label': None,
+            'show_randomly': False
+            }
+        )
         context.update({
             'instance': instance,
             'size': (instance.height, instance.width),
-            'orbit_config': config
+            'thumb_size': (instance.thumb_height, instance.thumb_width),
+            'skitter_config': config
         })
         return context
 
