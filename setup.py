@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
 import cmsplugin_filer_gallery
@@ -17,7 +18,7 @@ setup(
     version=cmsplugin_filer_gallery.get_version(),
     description='Django CMS plugin for django-filer-gallery',
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
-    author='\xc3yvind Saltvik',
+    author='Oyvind Saltvik',
     author_email='oyvind.saltvik@gmail.com',
     url='http://github.com/fivethreeo/cmsplugin-filer-gallery.git',
     packages=find_packages(),
