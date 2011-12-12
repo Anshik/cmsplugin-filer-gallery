@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-09 10:24+0400\n"
+"POT-Creation-Date: 2011-12-12 12:09+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,6 @@ msgstr "Файловая Галерея"
 msgid "Filer Gallery"
 msgstr "Файловая Галерея"
 
-#: models.py:13
-#, fuzzy
-msgid "Gallery"
-msgstr "Файловая Галерея"
-
 #: models.py:14
 msgid "height"
 msgstr "высота"
@@ -40,9 +35,17 @@ msgstr "высота"
 msgid "width"
 msgstr "ширина"
 
+#: models.py:16
+msgid "thumbnail height"
+msgstr "высота превью"
+
 #: models.py:16 models.py:17
 msgid "Leave empty for no thumbs."
 msgstr "Оставить пустым, если не нужно превью"
+
+#: models.py:17
+msgid "thumbnail width"
+msgstr "ширина превью"
 
 #: models.py:20
 msgid "django filer gallery"
@@ -51,3 +54,7 @@ msgstr "django файловая галерея"
 #: models.py:21
 msgid "django filer galleries"
 msgstr "djagno файловые галереи"
+
+#, fuzzy
+#~ msgid "Gallery"
+#~ msgstr "Файловая Галерея"

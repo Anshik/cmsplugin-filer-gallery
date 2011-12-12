@@ -13,8 +13,8 @@ class FilerGallery(CMSPlugin):
     gallery = models.ForeignKey('filer_gallery.Gallery')
     height = models.SmallIntegerField(_("height"),default=200)
     width = models.SmallIntegerField(_("width"), default=300)
-    thumb_height = models.SmallIntegerField(null=True, blank=True, default=None, help_text=_('Leave empty for no thumbs.'))
-    thumb_width = models.SmallIntegerField(null=True, blank=True, default=None, help_text=_('Leave empty for no thumbs.'))
+    thumb_height = models.SmallIntegerField(_("thumbnail height"), null=True, blank=True, default=None, help_text=_('Leave empty for no thumbs.'))
+    thumb_width = models.SmallIntegerField(_("thumbnail width"),null=True, blank=True, default=None, help_text=_('Leave empty for no thumbs.'))
     
     class Meta:
         verbose_name = _("django filer gallery")
