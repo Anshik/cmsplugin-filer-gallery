@@ -1,0 +1,47 @@
+#: cms_app.py:6
+msgid "Filer Gallery Apphook"
+msgstr ""
+
+#: cms_plugins.py:10
+msgid "Filer Gallery"
+msgstr ""
+
+#: models.py:15
+msgid "animation"
+msgstr ""
+
+#: models.py:16
+msgid "active number color"
+msgstr ""
+
+#: models.py:16
+msgid "Default #FF0000 red"
+msgstr ""
+
+#: models.py:19
+msgid "height"
+msgstr ""
+
+#: models.py:20
+msgid "width"
+msgstr ""
+
+#: models.py:21
+msgid "thumbnail height"
+msgstr ""
+
+#: models.py:21 models.py:22
+msgid "Leave empty for no thumbs."
+msgstr ""
+
+#: models.py:22
+msgid "thumbnail width"
+msgstr ""
+
+#: models.py:25
+msgid "django filer gallery"
+msgstr ""
+
+#: models.py:26
+msgid "django filer galleries"
+msgstr ""

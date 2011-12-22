@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-12 12:09+0400\n"
+"POT-Creation-Date: 2011-12-21 14:04+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,38 +23,47 @@ msgstr ""
 msgid "Filer Gallery Apphook"
 msgstr "Файловая Галерея"
 
-#: cms_plugins.py:9
+#: cms_plugins.py:10
 msgid "Filer Gallery"
 msgstr "Файловая Галерея"
 
-#: models.py:14
+#: models.py:15
+msgid "animation"
+msgstr "тип анимации"
+
+#: models.py:16
+msgid "active number color"
+msgstr "цвет номера активной фотографии"
+
+#: models.py:16
+#, fuzzy
+msgid "Default #FF0000 red"
+msgstr "По умолчанию #FF0000 красный"
+
+#: models.py:19
 msgid "height"
 msgstr "высота"
 
-#: models.py:15
+#: models.py:20
 msgid "width"
 msgstr "ширина"
 
-#: models.py:16
+#: models.py:21
 msgid "thumbnail height"
 msgstr "высота превью"
 
-#: models.py:16 models.py:17
+#: models.py:21 models.py:22
 msgid "Leave empty for no thumbs."
 msgstr "Оставить пустым, если не нужно превью"
 
-#: models.py:17
+#: models.py:22
 msgid "thumbnail width"
 msgstr "ширина превью"
 
-#: models.py:20
+#: models.py:25
 msgid "django filer gallery"
 msgstr "django файловая галерея"
 
-#: models.py:21
+#: models.py:26
 msgid "django filer galleries"
 msgstr "djagno файловые галереи"
-
-#, fuzzy
-#~ msgid "Gallery"
-#~ msgstr "Файловая Галерея"
